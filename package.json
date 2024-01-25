@@ -13,5 +13,8 @@
     "@types/glob": "^8.1.0",
     "glob": "^10.3.10",
     "rollup": "^4.9.6"
+  },
+  "dependencies": {
+    "@nestjs/core": "^10.0.0"
   }
 }

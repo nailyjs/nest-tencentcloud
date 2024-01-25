@@ -7,23 +7,20 @@ import { sms } from 'tencentcloud-sdk-nodejs';
 @Module({
   imports: [
     TencentCloudModule.registerAsync({
-      inject: [],
-      async useFactory() {
-        return {
-          clients: [
-            {
-              client: sms.v20210111.Client,
-              options: {
-                credential: {
-                  secretId: 'Dd',
-                  secretKey: 'vv',
-                },
+      global: true,
+      clients: [
+        {
+          client: sms.v20210111.Client,
+          useFactory() {
+            return {
+              credential: {
+                secretId: 'Dd',
+                secretKey: 'vv',
               },
-            },
-          ],
-          global: true,
-        };
-      },
+            };
+          },
+        },
+      ],
     }),
   ],
   controllers: [AppController],

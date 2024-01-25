@@ -1,8 +1,7 @@
 # Tencent Cloud Node SDK for Nest.js ☁️
 
-[中文](./README.md) | English
-
-[Official Node.js SDK](https://github.com/TencentCloud/tencentcloud-sdk-nodejs)
+- [Official Node.js SDK Github](https://github.com/TencentCloud/tencentcloud-sdk-nodejs)
+- [Github](https://github.com/nailyjs/nest-tencentcloud)
 
 This SDK is a nest.js version of the official Node.js SDK, which provides a simpler way to use in nest.
 
@@ -64,25 +63,23 @@ import { TencentCloudModule } from '@nailyjs.nest.modules/tencentcloud';
 @Module({
   imports: [
     TencentCloudModule.registerAsync({
-      // You can inject the configuration object here, such as ConfigService.
-      inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => {
-        // Return the tencent cloud configuration object, 👆same as General Usage.
-        return {
-          clients: [
-            {
-              client: sms.v20210111.Client,
-              options: {
-                credential: {
-                  secretId: '',
-                  secretKey: '',
-                },
+      // If you want to use the client across all your modules, you can set global to true.
+      global: true,
+      clients: [
+        {
+          // You can inject the configuration object here, such as ConfigService.
+          inject: [ConfigService],
+          useFactory: async (configService: ConfigService) => {
+            // Return the tencent cloud configuration object, 👆same as General Usage.
+            return {
+              credential: {
+                secretId: 'Hello',
+                secretKey: 'world',
               },
-            },
-          ],
-          global: true,
-        };
-      },
+            };
+          },
+        },
+      ],
     }),
   ],
 })

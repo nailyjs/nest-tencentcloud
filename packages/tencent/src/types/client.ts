@@ -17,9 +17,14 @@ export interface ITencentCloudModuleOptions<Client extends typeof TencentCloudCl
   global?: boolean;
 }
 
-export interface ITencentCloudModuleAsyncOptions<Client extends typeof TencentCloudClient> {
-  useFactory: (...args: any[]) => Promise<ITencentCloudModuleOptions<Client>> | ITencentCloudModuleOptions<Client>;
+export interface ITencentCloudModuleOptionsAsyncClient<Client extends typeof TencentCloudClient> {
+  client: Client;
+  useFactory: (...args: any[]) => Promise<ClientConfig> | ClientConfig;
   inject?: any[];
+}
+
+export interface ITencentCloudModuleAsyncOptions<Client extends typeof TencentCloudClient> {
+  clients: ITencentCloudModuleOptionsAsyncClient<Client>[];
   global?: boolean;
 }
 

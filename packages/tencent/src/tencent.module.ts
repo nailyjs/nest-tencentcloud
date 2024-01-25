@@ -1,9 +1,12 @@
-import { Module, Provider } from '@nestjs/common';
+import { DynamicModule, Module, Provider } from '@nestjs/common';
+import { ModuleRef } from '@nestjs/core';
 import { ITencentCloudModuleOptions, TencentCloudClient, ITencentCloudModuleAsyncOptions } from './types/client';
 
 @Module({})
 export class TencentCloudModule {
-  public static register<Client extends typeof TencentCloudClient>(tencentCloudModuleOptions: ITencentCloudModuleOptions<Client>) {
+  constructor(private readonly moduleRef: ModuleRef) {}
+
+  public static register<Client extends typeof TencentCloudClient>(tencentCloudModuleOptions: ITencentCloudModuleOptions<Client>): DynamicModule {
     const clientsProviders: Provider[] = [];
     for (const tencentCloudModuleOption of tencentCloudModuleOptions.clients) {
       const { client, options } = tencentCloudModuleOption;
@@ -23,23 +26,24 @@ export class TencentCloudModule {
 
   public static async registerAsync<Client extends typeof TencentCloudClient>(
     tencentCloudModuleAsyncOptions: ITencentCloudModuleAsyncOptions<Client>,
-  ) {
+  ): Promise<DynamicModule> {
     const clientsProviders: Provider[] = [];
 
-    const tencentCloudModuleOptions = await tencentCloudModuleAsyncOptions.useFactory();
-    for (const tencentCloudModuleOption of tencentCloudModuleOptions.clients) {
-      const { client, options } = tencentCloudModuleOption;
+    for (const tencentCloudModuleAsyncOption of tencentCloudModuleAsyncOptions.clients) {
+      const { client, useFactory, inject } = tencentCloudModuleAsyncOption;
+
       clientsProviders.push({
         provide: client,
-        useValue: new client(options),
+        useFactory: async (...args: any[]) => new client(await useFactory(...args)),
+        inject,
       });
     }
 
     return {
       module: TencentCloudModule,
-      global: typeof tencentCloudModuleAsyncOptions.global === 'boolean' ? tencentCloudModuleAsyncOptions.global : false,
       providers: [...clientsProviders],
       exports: [...clientsProviders],
+      global: typeof tencentCloudModuleAsyncOptions.global === 'boolean' ? tencentCloudModuleAsyncOptions.global : false,
     };
   }
 }

@@ -29,23 +29,25 @@ import { TencentCloudModule } from '@nailyjs.nest.modules/tencentcloud';
 
 @Module({
   imports: [
-    TencentCloudModule.register({
-      // 腾讯云 SDK 有很多Client类，你可以在这里配置。
+    TencentCloudModule.registerAsync({
+      // 如果你想在所有模块中使用这个客户端，你可以设置global为true。
+      global: true,
       clients: [
         {
-          // Client类，你可以在官方文档中找到你需要的Client：https://github.com/TencentCloud/tencentcloud-sdk-nodejs?tab=readme-ov-file#%E7%AE%80%E4%BB%8B
-          client: sms.v20210111.Client,
-          // Client配置对象，你可以在官方文档中找到：https://github.com/TencentCloud/tencentcloud-sdk-nodejs?tab=readme-ov-file#%E7%A4%BA%E4%BE%8B
-          options: {
-            credential: {
-              secretId: '',
-              secretKey: '',
-            },
+          // 你可以在这里注入其他Injectable，例如ConfigService。
+          inject: [ConfigService],
+          // 然后useFactory方法中的参数就是你注入的对象。
+          useFactory: async (configService: ConfigService) => {
+            // 返回腾讯云配置对象，👆和上面的正常的用法一样。
+            return {
+              credential: {
+                secretId: 'Hello',
+                secretKey: 'world',
+              },
+            };
           },
         },
       ],
-      // 如果你想在所有模块中使用这些Client，你可以设置global为true。默认是false，即只在当前模块中使用。
-      global: true,
     }),
   ],
 })
