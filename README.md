@@ -1,5 +1,11 @@
 # Nest.js 版 Tencent Cloud Node SDK ☁️
 
+中文 | [English](./README_EN.md)
+
+[官方Node.js SDK](https://github.com/TencentCloud/tencentcloud-sdk-nodejs)
+
+本SDK为官方Node.js SDK的nest.js版封装，提供了在nest中的更加简单的使用方式。
+
 ## 安装 📦
 
 `npm`、`yarn`、`pnpm` 都支持，推荐使用 `pnpm`。
