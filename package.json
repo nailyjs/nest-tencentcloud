@@ -1,0 +1,16 @@
+{
+  "name": "tencent-cloud",
+  "scripts": {
+    "build": "pnpm -F @nailyjs.nest.modules/tencentcloud build",
+    "dev": "pnpm -F test start:dev",
+    "format": "prettier --write ./"
+  },
+  "devDependencies": {
+    "@rollup/plugin-swc": "^0.3.0",
+    "@swc/cli": "^0.3.0",
+    "@swc/core": "^1.3.106",
+    "@types/glob": "^8.1.0",
+    "glob": "^10.3.10",
+    "rollup": "^4.9.6"
+  }
+}

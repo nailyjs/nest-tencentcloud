@@ -1,0 +1,41 @@
+{
+  "name": "@nailyjs.nest.modules/tencentcloud",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/types/index.d.ts",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && rollup -c rollup.config.mjs"
+  },
+  "bugs": {
+    "email": "gczgroup@qq.com",
+    "url": "https://github.com/nailyjs/nest-tencentcloud/issues"
+  },
+  "homepage": "https://github.com/nailyjs/nest-tencentcloud",
+  "author": {
+    "name": "Zero",
+    "email": "gczgroup@qq.com",
+    "url": "https://github.com/groupguanfang"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "nestjs",
+    "tencentcloud",
+    "tencentcloud-sdk-nodejs"
+  ],
+  "license": "MIT",
+  "description": "Nestjs TencentCloud Module",
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "tencentcloud-sdk-nodejs": "^4.0.787"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.11.6",
+    "@nestjs/common": "^10.3.1"
+  }
+}
