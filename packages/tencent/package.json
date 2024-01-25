@@ -20,6 +20,11 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest",
+    "registry": "https://registry.npmjs.org"
+  },
   "keywords": [
     "nestjs",
     "tencentcloud",
