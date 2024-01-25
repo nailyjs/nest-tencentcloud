@@ -15,8 +15,8 @@ import { sms } from 'tencentcloud-sdk-nodejs';
               client: sms.v20210111.Client,
               options: {
                 credential: {
-                  secretId: '',
-                  secretKey: '',
+                  secretId: 'Dd',
+                  secretKey: 'vv',
                 },
               },
             },

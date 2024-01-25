@@ -21,24 +21,19 @@ export class TencentCloudModule {
     };
   }
 
-  public static registerAsync<Client extends typeof TencentCloudClient>(tencentCloudModuleAsyncOptions: ITencentCloudModuleAsyncOptions<Client>) {
+  public static async registerAsync<Client extends typeof TencentCloudClient>(
+    tencentCloudModuleAsyncOptions: ITencentCloudModuleAsyncOptions<Client>,
+  ) {
     const clientsProviders: Provider[] = [];
 
-    clientsProviders.push({
-      provide: tencentCloudModuleAsyncOptions.useFactory,
-      useFactory: async (...args: any[]) => {
-        const tencentCloudModuleOptions = await tencentCloudModuleAsyncOptions.useFactory(...args);
-        for (const tencentCloudModuleOption of tencentCloudModuleOptions.clients) {
-          const { client, options } = tencentCloudModuleOption;
-          clientsProviders.push({
-            provide: client,
-            useValue: new client(options),
-          });
-        }
-        return tencentCloudModuleOptions;
-      },
-      inject: tencentCloudModuleAsyncOptions.inject,
-    });
+    const tencentCloudModuleOptions = await tencentCloudModuleAsyncOptions.useFactory();
+    for (const tencentCloudModuleOption of tencentCloudModuleOptions.clients) {
+      const { client, options } = tencentCloudModuleOption;
+      clientsProviders.push({
+        provide: client,
+        useValue: new client(options),
+      });
+    }
 
     return {
       module: TencentCloudModule,
