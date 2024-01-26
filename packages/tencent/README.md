@@ -125,5 +125,5 @@ export class AppController {
 
 If you think this project is helpful to you, you can buy me a cup of coffee QWQ~
 
-![wechat](./screenshots/wechat.jpg)
-![alipay](./screenshots/alipay.jpg)
+![wechat](https://github.com/nailyjs/nest-tencentcloud/blob/v1/screenshots/wechat.jpg?raw=true)
+![alipay](https://github.com/nailyjs/nest-tencentcloud/blob/v1/screenshots/alipay.jpg?raw=true)

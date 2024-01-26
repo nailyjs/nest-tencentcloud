@@ -1,5 +1,11 @@
 # @nailyjs.nest.modules/tencentcloud
 
+## 1.0.6
+
+### Patch Changes
+
+- feat: remove screenshot change to use github
+
 ## 1.0.5
 
 ### Patch Changes

@@ -5,6 +5,13 @@
 ### Patch Changes
 
 - Updated dependencies
+  - @nailyjs.nest.modules/tencentcloud@1.0.6
+
+## null
+
+### Patch Changes
+
+- Updated dependencies
   - @nailyjs.nest.modules/tencentcloud@1.0.5
 
 ## null
