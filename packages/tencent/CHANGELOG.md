@@ -1,5 +1,17 @@
 # @nailyjs.nest.modules/tencentcloud
 
+## 1.0.5
+
+### Patch Changes
+
+- feat: update package.json
+
+## 1.0.4
+
+### Patch Changes
+
+- chore: package.json, remove GPL's header comment
+
 ## 1.0.3
 
 ### Patch Changes

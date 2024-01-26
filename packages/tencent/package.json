@@ -3,9 +3,10 @@
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/types/index.d.ts",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && rollup -c rollup.config.mjs"
+    "build": "tsc -p tsconfig.build.json && rollup -c rollup.config.mjs",
+    "prepublishOnly": "npm run build"
   },
   "bugs": {
     "email": "gczgroup@qq.com",
@@ -18,7 +19,8 @@
     "url": "https://github.com/groupguanfang"
   },
   "files": [
-    "lib"
+    "lib",
+    "screenshots"
   ],
   "publishConfig": {
     "access": "public",
@@ -30,7 +32,7 @@
     "tencentcloud",
     "tencentcloud-sdk-nodejs"
   ],
-  "license": "MIT",
+  "license": "Apache-2.0",
   "description": "Nestjs TencentCloud Module",
   "engines": {
     "node": ">=12"
